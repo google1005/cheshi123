@@ -1,0 +1,552 @@
+/* Team Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #00d4ff;
+    --secondary-blue: #0099cc;
+    --accent-purple: #9d4edd;
+    --accent-pink: #ff006e;
+    --dark-bg: #0a0a0f;
+    --darker-bg: #050508;
+    --card-bg: rgba(15, 15, 25, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8d1;
+    --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Theme Variations */
+.fuzhou-theme {
+    --theme-color: #2E8B57;
+    --theme-gradient: linear-gradient(45deg, #2E8B57, #228B22);
+}
+
+.xiamen-theme {
+    --theme-color: #40E0D0;
+    --theme-gradient: linear-gradient(45deg, #40E0D0, #48D1CC);
+}
+
+.quanzhou-theme {
+    --theme-color: #DAA520;
+    --theme-gradient: linear-gradient(45deg, #DAA520, #FFD700);
+}
+
+.ningde-theme {
+    --theme-color: #8B4513;
+    --theme-gradient: linear-gradient(45deg, #8B4513, #CD853F);
+}
+
+.longyan-theme {
+    --theme-color: #DC143C;
+    --theme-gradient: linear-gradient(45deg, #DC143C, #FF6347);
+}
+
+.zhangzhou-theme {
+    --theme-color: #FF69B4;
+    --theme-gradient: linear-gradient(45deg, #FF69B4, #FF1493);
+}
+
+.sanming-theme {
+    --theme-color: #4169E1;
+    --theme-gradient: linear-gradient(45deg, #4169E1, #6495ED);
+}
+
+.nanping-theme {
+    --theme-color: #32CD32;
+    --theme-gradient: linear-gradient(45deg, #32CD32, #228B22);
+}
+
+/* Background */
+.space-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, var(--primary-blue), transparent),
+        radial-gradient(2px 2px at 40px 70px, var(--accent-purple), transparent),
+        radial-gradient(1px 1px at 90px 40px, var(--accent-pink), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 3s linear infinite;
+}
+
+.nebula {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+    animation: nebula-drift 20s ease-in-out infinite;
+}
+
+.fuzhou-nebula {
+    background: radial-gradient(ellipse at top, rgba(46, 139, 87, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(34, 139, 34, 0.1) 0%, transparent 50%);
+}
+
+.xiamen-nebula {
+    background: radial-gradient(ellipse at top, rgba(64, 224, 208, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(72, 209, 204, 0.1) 0%, transparent 50%);
+}
+
+.quanzhou-nebula {
+    background: radial-gradient(ellipse at top, rgba(218, 165, 32, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+}
+
+.ningde-nebula {
+    background: radial-gradient(ellipse at top, rgba(139, 69, 19, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(205, 133, 63, 0.1) 0%, transparent 50%);
+}
+
+.longyan-nebula {
+    background: radial-gradient(ellipse at top, rgba(220, 20, 60, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(255, 99, 71, 0.1) 0%, transparent 50%);
+}
+
+.zhangzhou-nebula {
+    background: radial-gradient(ellipse at top, rgba(255, 105, 180, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(255, 20, 147, 0.1) 0%, transparent 50%);
+}
+
+.sanming-nebula {
+    background: radial-gradient(ellipse at top, rgba(65, 105, 225, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(100, 149, 237, 0.1) 0%, transparent 50%);
+}
+
+.nanping-nebula {
+    background: radial-gradient(ellipse at top, rgba(50, 205, 50, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(34, 139, 34, 0.1) 0%, transparent 50%);
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes nebula-drift {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(2deg); }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo-text {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, var(--primary-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--theme-color);
+    text-shadow: 0 0 10px var(--theme-color);
+}
+
+/* Team Hero */
+.team-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.team-hero-content {
+    flex: 1;
+    text-align: center;
+    padding-right: 2rem;
+}
+
+.team-logo-large {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--theme-color);
+    box-shadow: 0 0 30px var(--theme-color);
+    animation: logo-float 6s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.team-logo-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.hero-decoration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fuzhou-elements, .xiamen-elements, .quanzhou-elements {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: element-float 4s ease-in-out infinite;
+}
+
+.banyan-tree {
+    width: 80px;
+    height: 80px;
+    background: var(--theme-gradient);
+    top: 20%;
+    left: 30%;
+}
+
+.three-lanes {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #8B4513, #A0522D);
+    top: 60%;
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.west-lake {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #4682B4, #1E90FF);
+    top: 40%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.gulangyu {
+    width: 90px;
+    height: 90px;
+    background: var(--theme-gradient);
+    top: 25%;
+    left: 40%;
+}
+
+.ocean {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #00CED1, #20B2AA);
+    top: 50%;
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.palm {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #32CD32, #228B22);
+    top: 70%;
+    left: 60%;
+    animation-delay: 2s;
+}
+
+@keyframes logo-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes element-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Sections */
+.culture-section, .landmarks-section, .cuisine-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Culture Cards */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.culture-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.culture-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--theme-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.culture-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--theme-color);
+}
+
+.culture-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Landmarks */
+.landmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.landmark-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.landmark-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.landmark-image {
+    height: 200px;
+    position: relative;
+}
+
+.landmark-info {
+    padding: 1.5rem;
+}
+
+.landmark-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.landmark-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Cuisine */
+.cuisine-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.cuisine-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.cuisine-item:hover {
+    transform: translateX(10px);
+    border-color: var(--theme-color);
+}
+
+.cuisine-image {
+    height: 150px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.cuisine-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--theme-color);
+}
+
+.cuisine-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.team-footer {
+    background: var(--darker-bg);
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.team-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat .number {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--theme-color);
+    display: block;
+}
+
+.stat .label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .team-hero-content {
+        padding-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .team-title {
+        font-size: 2.5rem;
+    }
+
+    .cuisine-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .culture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .landmarks-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .team-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
